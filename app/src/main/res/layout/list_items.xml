@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNewsImage"
+        android:layout_marginTop="10dp"
+        android:layout_width="140dp"
+        android:layout_height="160dp"
+        app:cardCornerRadius="15dp"
+        >
+        <ImageView
+            android:id="@+id/newsImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/greyhound"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/cardNewsImage"
+        android:layout_alignTop="@id/cardNewsImage"
+        android:layout_marginStart="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Film Terbaik tahun ini"
+        />
+
+</RelativeLayout>
