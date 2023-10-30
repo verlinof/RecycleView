@@ -1,5 +1,6 @@
 package com.example.recycleview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArrayList: ArrayList<News>
+    lateinit var newsBody: Array<String>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
 
@@ -22,6 +24,13 @@ class MainActivity : AppCompatActivity() {
             R.drawable.granturismo,
             R.drawable.maze_runner,
             R.drawable.onepiece,
+        )
+
+        newsBody = arrayOf(
+            getString(R.string.news_greyhound),
+            getString(R.string.news_gran_turismo),
+            getString(R.string.news_maze_runner),
+            getString(R.string.news_one_piece),
         )
 
         heading = arrayOf(
@@ -50,7 +59,12 @@ class MainActivity : AppCompatActivity() {
         newRecyclerView.adapter = adapter
         adapter.setOnItemClickListener(object :MyAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Toast.makeText(this@MainActivity, "You clicked item no $position", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@MainActivity, NewsActivity::class.java)
+                intent.putExtra("newsHeading", newArrayList[position].heading)
+                intent.putExtra("newsImage", newArrayList[position].newsImage)
+                intent.putExtra("newsBody", newsBody[position])
+                startActivity(intent)
+
             }
 
         })
